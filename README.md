@@ -1,6 +1,13 @@
 # ConTextCap 📚
+[![GitHub license](https://img.shields.io/github/license/awaliuddin/ConTextCap)](https://github.com/awaliuddin/ConTextCap/blob/main/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/awaliuddin/ConTextCap)](https://github.com/awaliuddin/ConTextCap/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/awaliuddin/ConTextCap)](https://github.com/awaliuddin/ConTextCap/issues)
+[![GitHub forks](https://img.shields.io/github/forks/awaliuddin/ConTextCap)](https://github.com/awaliuddin/ConTextCap/network)
+[![Python Version](https://img.shields.io/badge/python-3.6%2B-blue)](https://www.python.org/downloads/)
 
-A powerful desktop application that captures and documents your codebase by generating beautiful PDF documentation of your project's structure and contents.
+> 🚀 ConTextCap = "Context Capture" A powerful desktop application that captures and documents your project codebase and artifacts by generating a single, beautiful PDF document to feed to your LLM of your choice. 🥳
+
+[Demo Screenshot/GIF Coming Soon]
 
 ## Features ✨
 
@@ -19,6 +26,11 @@ A powerful desktop application that captures and documents your codebase by gene
 
 ## Installation 📦
 
+### Prerequisites
+- Python 3.6 or higher
+- pip (Python package installer)
+
+### Quick Start
 1. Clone the repository:
 ```bash
 git clone https://github.com/awaliuddin/ConTextCap.git
@@ -27,7 +39,7 @@ cd ConTextCap
 
 2. Install the required dependencies:
 ```bash
-pip install PyQt6 fpdf
+pip install -r requirements.txt
 ```
 
 ## Usage 🚀
@@ -61,10 +73,41 @@ The application generates a hierarchical view of your project's structure, makin
 
 ## Contributing 🤝
 
-Contributions are welcome! Feel free to:
-- Report bugs
-- Suggest new features
-- Submit pull requests
+We love your input! We want to make contributing to ConTextCap as easy and transparent as possible, whether it's:
+
+- Reporting a bug
+- Discussing the current state of the code
+- Submitting a fix
+- Proposing new features
+- Becoming a maintainer
+
+### Development Process
+
+1. Fork the repo and create your branch from `main`.
+2. If you've added code that should be tested, add tests.
+3. If you've changed APIs, update the documentation.
+4. Ensure the test suite passes.
+5. Make sure your code lints.
+6. Issue that pull request!
+
+### Any contributions you make will be under the MIT Software License
+In short, when you submit code changes, your submissions are understood to be under the same [MIT License](http://choosealicense.com/licenses/mit/) that covers the project. Feel free to contact the maintainers if that's a concern.
+
+## Roadmap 🗺️
+
+- [ ] Add support for more file types
+- [ ] Custom theming options
+- [ ] Export in multiple formats (MD, HTML)
+- [ ] Batch processing capabilities
+- [ ] Integration with CI/CD pipelines
+
+## Support 💝
+
+If you found this project interesting or helpful, please consider:
+- ⭐ Starring the repository
+- 🐛 Reporting bugs
+- 💡 Suggesting new features
+- 🔀 Creating pull requests
 
 ## License 📄
 

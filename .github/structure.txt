@@ -1,0 +1,10 @@
+internal-docs/
+├── maintenance/
+│   └── guide.md        # Combines daily, weekly, monthly tasks and emergency procedures
+├── team/
+│   └── handbook.md     # Combines onboarding, processes, and contacts
+├── security/
+│   └── policies.md     # Combines protocols and incident response
+└── project/
+    ├── overview.md     # Combines architecture and deployment info
+    └── secrets.md      # For credentials and sensitive information
