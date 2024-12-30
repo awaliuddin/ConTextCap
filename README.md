@@ -105,7 +105,7 @@ In short, when you submit code changes, your submissions are understood to be un
 
 If you found this project interesting or helpful, please consider:
 - ⭐ Starring the repository
-- 🐛 Reporting bugs
+- 🐛 Reporting [bugs/issues](https://github.com/awaliuddin/ConTextCap/issues)
 - 💡 Suggesting new features
 - 🔀 Creating pull requests
 
