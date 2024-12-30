@@ -5,7 +5,7 @@
 [![GitHub forks](https://img.shields.io/github/forks/awaliuddin/ConTextCap)](https://github.com/awaliuddin/ConTextCap/network)
 [![Python Version](https://img.shields.io/badge/python-3.6%2B-blue)](https://www.python.org/downloads/)
 
-> 🚀 ConTextCap = "Context Capture" A powerful desktop application that captures and documents your project codebase and artifacts by generating a single, beautiful PDF document to feed to your LLM of your choice. 🥳
+> 🚀 ConTextCap = "Context Capture" A powerful desktop application that captures and documents your project codebase and artifacts by generating a single, beautiful PDF document to feed to your LLM of choice. 🥳
 
 [Demo Screenshot/GIF Coming Soon]
 
