@@ -1,0 +1,229 @@
+# ConTextCap Configuration Example
+# Copy this file to contextcap.yml and customize for your needs
+
+# Application Settings
+app:
+  name: "ConTextCap"
+  version: "1.0.0"
+  author: "Your Name"
+
+# PDF Generation Settings
+pdf:
+  # Default icon style: classic, vivid, high-contrast, square-o
+  default_icon_style: "high-contrast"
+
+  # PDF metadata
+  metadata:
+    title: "Project Documentation"
+    author: "ConTextCap"
+    subject: "Codebase Documentation"
+    keywords: "code, documentation, pdf"
+
+  # Page settings
+  page:
+    format: "A4"  # A4, Letter, Legal
+    orientation: "P"  # P (Portrait) or L (Landscape)
+    unit: "mm"
+    margin_left: 15
+    margin_top: 15
+    margin_right: 15
+
+  # Font settings
+  fonts:
+    family: "Arial"
+    size_title: 16
+    size_heading: 14
+    size_body: 10
+    size_code: 8
+
+# File Processing Settings
+processing:
+  # Maximum file size to include (in bytes, 0 = unlimited)
+  max_file_size: 1048576  # 1MB
+
+  # File encoding
+  default_encoding: "utf-8"
+  fallback_encodings:
+    - "latin-1"
+    - "cp1252"
+
+  # Text file extensions (full content included)
+  text_extensions:
+    - .py
+    - .js
+    - .ts
+    - .jsx
+    - .tsx
+    - .java
+    - .cpp
+    - .c
+    - .h
+    - .go
+    - .rs
+    - .rb
+    - .php
+    - .html
+    - .css
+    - .scss
+    - .json
+    - .xml
+    - .yaml
+    - .yml
+    - .toml
+    - .md
+    - .rst
+    - .txt
+    - .log
+    - .ini
+    - .conf
+    - .cfg
+    - .sh
+    - .bash
+    - .sql
+
+  # Binary file extensions (metadata only)
+  binary_extensions:
+    - .png
+    - .jpg
+    - .jpeg
+    - .gif
+    - .pdf
+    - .zip
+    - .tar
+    - .gz
+    - .exe
+    - .dll
+    - .so
+
+# Directory Filtering
+filtering:
+  # Directories to exclude (exact match)
+  exclude_dirs:
+    - .git
+    - .svn
+    - .hg
+    - __pycache__
+    - .pytest_cache
+    - .mypy_cache
+    - .tox
+    - node_modules
+    - bower_components
+    - .venv
+    - venv
+    - env
+    - ENV
+    - .env
+    - virtualenv
+    - .idea
+    - .vscode
+    - .vs
+    - dist
+    - build
+    - target
+    - out
+    - bin
+    - obj
+    - .gradle
+    - .next
+    - .nuxt
+    - coverage
+    - htmlcov
+
+  # Files to exclude (patterns)
+  exclude_files:
+    - "*.pyc"
+    - "*.pyo"
+    - "*.pyd"
+    - "*.so"
+    - "*.dll"
+    - "*.exe"
+    - "*.o"
+    - "*.a"
+    - ".DS_Store"
+    - "Thumbs.db"
+    - "*.swp"
+    - "*.swo"
+    - "*~"
+    - ".gitkeep"
+
+  # Include hidden files/directories
+  include_hidden: false
+
+# Output Settings
+output:
+  # Default output directory
+  default_dir: "./output"
+
+  # Filename pattern (supports: {date}, {time}, {project_name})
+  filename_pattern: "{project_name}_{date}.pdf"
+
+  # Date/time format
+  date_format: "%Y%m%d"
+  time_format: "%H%M%S"
+
+# UI Settings
+ui:
+  # Window size
+  window:
+    width: 800
+    height: 600
+    resizable: true
+
+  # Theme
+  theme: "system"  # system, light, dark
+
+  # Remember last settings
+  remember_settings: true
+
+  # Show progress dialog for large projects
+  show_progress: true
+
+  # Progress threshold (number of files)
+  progress_threshold: 100
+
+# Performance Settings
+performance:
+  # Number of worker threads
+  worker_threads: 4
+
+  # Chunk size for processing large files
+  chunk_size: 8192
+
+  # Enable caching
+  enable_cache: true
+
+  # Cache directory
+  cache_dir: ".cache/contextcap"
+
+# Logging
+logging:
+  # Log level: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  level: "INFO"
+
+  # Log file
+  file: "contextcap.log"
+
+  # Log format
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+  # Rotate logs
+  rotate: true
+  max_bytes: 10485760  # 10MB
+  backup_count: 5
+
+# Advanced Settings
+advanced:
+  # Enable experimental features
+  experimental_features: false
+
+  # Custom pre-processing script
+  pre_process_script: null
+
+  # Custom post-processing script
+  post_process_script: null
+
+  # Plugin directory
+  plugin_dir: "./plugins"
+
+  # Enable plugins
+  enable_plugins: false

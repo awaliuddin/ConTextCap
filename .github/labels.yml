@@ -1,0 +1,148 @@
+# Label configuration for ConTextCap
+# This file defines all labels used in the repository
+
+# Type labels
+- name: bug
+  description: Something isn't working
+  color: d73a4a
+
+- name: enhancement
+  description: New feature or request
+  color: a2eeef
+
+- name: feature
+  description: New functionality
+  color: 0e8a16
+
+- name: documentation
+  description: Improvements or additions to documentation
+  color: 0075ca
+
+- name: question
+  description: Further information is requested
+  color: d876e3
+
+# Priority labels
+- name: priority/critical
+  description: Critical priority
+  color: b60205
+
+- name: priority/high
+  description: High priority
+  color: d93f0b
+
+- name: priority/medium
+  description: Medium priority
+  color: fbca04
+
+- name: priority/low
+  description: Low priority
+  color: 0e8a16
+
+# Status labels
+- name: status/in-progress
+  description: Currently being worked on
+  color: fbca04
+
+- name: status/blocked
+  description: Blocked by another issue or dependency
+  color: b60205
+
+- name: status/on-hold
+  description: Work on this is on hold
+  color: fef2c0
+
+- name: status/needs-review
+  description: Needs code review
+  color: fbca04
+
+- name: status/needs-triage
+  description: Needs to be triaged
+  color: ededed
+
+# Size labels
+- name: size/xs
+  description: Extra small PR (1-10 lines)
+  color: 3cbf00
+
+- name: size/s
+  description: Small PR (11-50 lines)
+  color: 5d9801
+
+- name: size/m
+  description: Medium PR (51-200 lines)
+  color: 7f7203
+
+- name: size/l
+  description: Large PR (201-500 lines)
+  color: a14c05
+
+- name: size/xl
+  description: Extra large PR (500+ lines)
+  color: c32607
+
+# Component labels
+- name: python
+  description: Python code changes
+  color: 3776ab
+
+- name: tests
+  description: Test changes
+  color: 0e8a16
+
+- name: ci/cd
+  description: CI/CD pipeline changes
+  color: 2188ff
+
+- name: dependencies
+  description: Dependency updates
+  color: 0366d6
+
+- name: security
+  description: Security-related changes
+  color: ee0701
+
+- name: performance
+  description: Performance improvements
+  color: 00ff00
+
+- name: ui
+  description: User interface changes
+  color: c5def5
+
+# Special labels
+- name: good first issue
+  description: Good for newcomers
+  color: 7057ff
+
+- name: help wanted
+  description: Extra attention is needed
+  color: 008672
+
+- name: wontfix
+  description: This will not be worked on
+  color: ffffff
+
+- name: duplicate
+  description: This issue or pull request already exists
+  color: cfd3d7
+
+- name: invalid
+  description: This doesn't seem right
+  color: e4e669
+
+- name: stale
+  description: Marked as stale due to inactivity
+  color: eeeeee
+
+- name: breaking
+  description: Breaking change
+  color: b60205
+
+- name: maintenance
+  description: Maintenance tasks
+  color: fbca04
+
+- name: refactoring
+  description: Code refactoring
+  color: 1d76db

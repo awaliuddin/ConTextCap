@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  contextcap:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: contextcap
+    image: contextcap:latest
+
+    environment:
+      - DISPLAY=${DISPLAY:-:99}
+      - QT_QPA_PLATFORM=offscreen
+      - PYTHONUNBUFFERED=1
+
+    volumes:
+      # Mount your project directory
+      - ./projects:/data/projects:ro
+      # Mount output directory
+      - ./output:/data/output
+      # Optional: Mount configuration
+      - ./config:/app/config:ro
+
+    # For GUI display (X11 forwarding)
+    # Uncomment if you need GUI on Linux/Mac
+    # volumes:
+    #   - /tmp/.X11-unix:/tmp/.X11-unix:ro
+    #   - $HOME/.Xauthority:/root/.Xauthority:ro
+    # network_mode: host
+
+    restart: unless-stopped
+
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 2G
+        reservations:
+          cpus: '1.0'
+          memory: 512M
+
+  # Development service with hot-reload
+  contextcap-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: contextcap-dev
+    image: contextcap:dev
+
+    environment:
+      - DISPLAY=${DISPLAY:-:99}
+      - QT_QPA_PLATFORM=offscreen
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+
+    volumes:
+      # Mount source code for development
+      - .:/app
+      - ./projects:/data/projects:ro
+      - ./output:/data/output
+
+    command: python ConTextCap.py
+
+    restart: unless-stopped
+
+    profiles:
+      - dev

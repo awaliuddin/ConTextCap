@@ -1,0 +1,35 @@
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 💡 Got an idea for ConTextCap?
+
+        Share your thoughts! This is a place for brainstorming and discussing potential features.
+
+  - type: textarea
+    id: idea
+    attributes:
+      label: Your Idea
+      description: What's your idea? Be as detailed as you'd like.
+      placeholder: Tell us your idea...
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case
+      description: How would this help you or others?
+      placeholder: Describe the use case...
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternative Solutions
+      description: Have you considered any alternative approaches?
+      placeholder: Any alternatives you've thought of...
+    validations:
+      required: false

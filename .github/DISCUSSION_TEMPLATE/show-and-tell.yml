@@ -1,0 +1,44 @@
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 🎉 Show and Tell
+
+        Share how you're using ConTextCap! We love seeing what the community creates.
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What did you create?
+      description: Tell us about your project or use case
+      placeholder: I used ConTextCap to...
+    validations:
+      required: true
+
+  - type: textarea
+    id: how
+    attributes:
+      label: How did you do it?
+      description: Share your process, tips, or configuration
+      placeholder: Here's how I did it...
+    validations:
+      required: false
+
+  - type: textarea
+    id: results
+    attributes:
+      label: Results
+      description: What was the outcome? Any screenshots or metrics?
+      placeholder: The results were...
+    validations:
+      required: false
+
+  - type: textarea
+    id: learnings
+    attributes:
+      label: What did you learn?
+      description: Any insights or tips for others?
+      placeholder: I learned that...
+    validations:
+      required: false

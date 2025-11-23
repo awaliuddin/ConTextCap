@@ -1,0 +1,27 @@
+name: Label Manager
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - '.github/labels.yml'
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  label-sync:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Sync labels
+      uses: micnncim/action-label-syncer@v1
+      with:
+        manifest: .github/labels.yml
+        repository: ${{ github.repository }}
+        token: ${{ secrets.GITHUB_TOKEN }}
+        prune: true

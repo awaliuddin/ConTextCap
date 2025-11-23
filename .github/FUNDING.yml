@@ -1,0 +1,20 @@
+# GitHub Sponsors configuration
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/displaying-a-sponsor-button
+
+# Supported platforms
+github: [] # GitHub username(s) for GitHub Sponsors
+patreon: # Patreon username
+open_collective: # Open Collective username
+ko_fi: # Ko-fi username
+tidelift: # Tidelift platform-name/package-name
+community_bridge: # Community Bridge project name
+liberapay: # Liberapay username
+issuehunt: # IssueHunt username
+otechie: # Otechie username
+lfx_crowdfunding: # LFX Crowdfunding project name
+custom: [] # Custom sponsorship URLs
+
+# Example configuration (uncomment and customize):
+# github: [awaliuddin]
+# ko_fi: awaliuddin
+# custom: ['https://www.buymeacoffee.com/awaliuddin']
