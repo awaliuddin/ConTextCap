@@ -1,0 +1,66 @@
+name: Auto Assign
+
+on:
+  issues:
+    types: [opened]
+  pull_request:
+    types: [opened]
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  auto-assign:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Auto-assign issues and PRs
+      uses: actions/github-script@v7
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const isIssue = context.payload.issue !== undefined;
+          const isPR = context.payload.pull_request !== undefined;
+
+          // Add helpful comment to PRs
+          if (isPR) {
+            const prNumber = context.payload.pull_request.number;
+
+            // Check if PR is from a fork
+            const isFork = context.payload.pull_request.head.repo.fork;
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber,
+              body: `Thanks for opening this PR! 🎉\n\n` +
+                    `Here's what happens next:\n` +
+                    `- ✅ Our CI will run automated tests\n` +
+                    `- 👀 A maintainer will review your code\n` +
+                    `- 💬 We may suggest some changes or improvements\n` +
+                    `- 🎊 Once approved, we'll merge your contribution!\n\n` +
+                    `Please make sure:\n` +
+                    `- [ ] Your code follows our coding standards\n` +
+                    `- [ ] All tests pass\n` +
+                    `- [ ] Documentation is updated if needed\n\n` +
+                    `Feel free to ask questions if you need help! 🤝`
+            });
+          }
+
+          // Add helpful comment to issues
+          if (isIssue && !context.payload.issue.pull_request) {
+            const issueNumber = context.payload.issue.number;
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              body: `Thanks for opening this issue! 📝\n\n` +
+                    `To help us address this:\n` +
+                    `- Make sure you've included all relevant information\n` +
+                    `- For bugs: steps to reproduce, expected vs actual behavior\n` +
+                    `- For features: clear description of the desired functionality\n\n` +
+                    `A maintainer will take a look soon! 👀`
+            });
+          }

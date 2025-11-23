@@ -1,2 +1,3 @@
-PyQt6
-fpdf2
+# Core dependencies for ConTextCap
+PyQt6>=6.4.0
+fpdf2>=2.7.0

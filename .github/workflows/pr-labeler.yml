@@ -1,0 +1,70 @@
+name: PR Labeler
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  label:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Auto-label PR
+      uses: actions/labeler@v5
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        configuration-path: .github/labeler.yml
+
+    - name: Label based on PR size
+      uses: codelytv/pr-size-labeler@v1
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        xs_label: 'size/xs'
+        xs_max_size: 10
+        s_label: 'size/s'
+        s_max_size: 50
+        m_label: 'size/m'
+        m_max_size: 200
+        l_label: 'size/l'
+        l_max_size: 500
+        xl_label: 'size/xl'
+        fail_if_xl: false
+
+    - name: Label based on file changes
+      uses: actions/github-script@v7
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const pr = context.payload.pull_request;
+          const files = await github.rest.pulls.listFiles({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            pull_number: pr.number
+          });
+
+          const labels = [];
+          const fileNames = files.data.map(f => f.filename);
+
+          // Add labels based on file types
+          if (fileNames.some(f => f.endsWith('.py'))) labels.push('python');
+          if (fileNames.some(f => f.endsWith('.md'))) labels.push('documentation');
+          if (fileNames.some(f => f.includes('test'))) labels.push('tests');
+          if (fileNames.some(f => f.includes('.github/workflows'))) labels.push('ci/cd');
+          if (fileNames.some(f => f === 'requirements.txt' || f === 'setup.py' || f === 'pyproject.toml')) labels.push('dependencies');
+
+          if (labels.length > 0) {
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: pr.number,
+              labels: labels
+            });
+          }

@@ -1,0 +1,42 @@
+name: Greetings
+
+on: [pull_request_target, issues]
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Welcome first-time contributors
+      uses: actions/first-interaction@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        issue-message: |
+          👋 **Welcome to ConTextCap!**
+
+          Thank you for creating your first issue! We're excited to have you as part of our community.
+
+          A maintainer will review your issue soon. In the meantime:
+          - Make sure you've provided all the necessary information
+          - Check out our [Contributing Guide](../CONTRIBUTING.md)
+          - Join our discussions to connect with other contributors
+
+          Happy coding! 🚀
+        pr-message: |
+          🎉 **Thank you for your first pull request!**
+
+          We're thrilled to have you contribute to ConTextCap! Your contribution matters and we appreciate your effort.
+
+          Before your PR can be merged, please ensure:
+          - [ ] Your code follows our style guidelines
+          - [ ] All tests pass
+          - [ ] You've updated documentation if needed
+          - [ ] Your commits follow our commit message conventions
+
+          A maintainer will review your PR soon. Feel free to ask questions if you need any help!
+
+          Welcome aboard! 🎊

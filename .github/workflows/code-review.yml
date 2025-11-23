@@ -1,0 +1,66 @@
+name: AI Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Review code quality
+      uses: actions/github-script@v7
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const pr = context.payload.pull_request;
+          const files = await github.rest.pulls.listFiles({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            pull_number: pr.number
+          });
+
+          let reviewComments = [];
+
+          for (const file of files.data) {
+            // Check for common issues
+            if (file.filename.endsWith('.py')) {
+              const patch = file.patch || '';
+
+              // Check for print statements (should use logging)
+              if (patch.includes('print(')) {
+                reviewComments.push(`⚠️ Consider using logging instead of print() in ${file.filename}`);
+              }
+
+              // Check for TODO comments
+              if (patch.includes('TODO') || patch.includes('FIXME')) {
+                reviewComments.push(`📝 Found TODO/FIXME in ${file.filename} - consider creating an issue`);
+              }
+
+              // Check for large files
+              if (file.changes > 500) {
+                reviewComments.push(`📦 ${file.filename} has ${file.changes} changes - consider breaking into smaller PRs`);
+              }
+            }
+          }
+
+          if (reviewComments.length > 0) {
+            const body = '### 🤖 Automated Code Review\n\n' + reviewComments.join('\n');
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: pr.number,
+              body: body
+            });
+          }

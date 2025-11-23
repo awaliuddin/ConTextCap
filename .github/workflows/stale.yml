@@ -1,0 +1,68 @@
+name: Mark stale issues and PRs
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Run daily at midnight
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/stale@v9
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+        # Issues
+        days-before-issue-stale: 60
+        days-before-issue-close: 14
+        stale-issue-label: 'stale'
+        stale-issue-message: |
+          This issue has been automatically marked as stale because it has not had recent activity.
+          It will be closed in 14 days if no further activity occurs.
+
+          If this issue is still relevant, please:
+          - Add a comment to keep it open
+          - Update the issue with any new information
+          - Reference it in a pull request
+
+          Thank you for your contributions! 🙏
+        close-issue-message: |
+          This issue has been automatically closed due to inactivity.
+
+          If you believe this issue is still relevant, feel free to reopen it or create a new issue with updated information.
+
+          Thank you! 🙏
+
+        # Pull Requests
+        days-before-pr-stale: 30
+        days-before-pr-close: 14
+        stale-pr-label: 'stale'
+        stale-pr-message: |
+          This pull request has been automatically marked as stale because it has not had recent activity.
+          It will be closed in 14 days if no further activity occurs.
+
+          If you're still working on this PR, please:
+          - Push new commits
+          - Add a comment explaining the status
+          - Request a review if ready
+
+          Thank you for your contribution! 🙏
+        close-pr-message: |
+          This pull request has been automatically closed due to inactivity.
+
+          If you'd like to continue this work, feel free to reopen the PR or create a new one.
+
+          Thank you! 🙏
+
+        # Labels to exclude from being marked stale
+        exempt-issue-labels: 'pinned,security,roadmap,in-progress'
+        exempt-pr-labels: 'pinned,security,wip,in-progress'
+
+        # Don't mark issues/PRs with these assignees as stale
+        exempt-all-assignees: true

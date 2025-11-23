@@ -1,0 +1,49 @@
+# Auto-labeling configuration for PRs
+
+# Documentation changes
+documentation:
+  - '**/*.md'
+  - 'docs/**/*'
+  - '.github/ISSUE_TEMPLATE/**/*'
+  - '.github/PULL_REQUEST_TEMPLATE/**/*'
+
+# Python code changes
+python:
+  - '**/*.py'
+
+# Tests
+tests:
+  - 'tests/**/*'
+  - '**/*test*.py'
+
+# CI/CD changes
+ci/cd:
+  - '.github/workflows/**/*'
+  - '.github/actions/**/*'
+
+# Dependencies
+dependencies:
+  - 'requirements.txt'
+  - 'requirements-dev.txt'
+  - 'setup.py'
+  - 'pyproject.toml'
+  - 'setup.cfg'
+
+# Configuration
+configuration:
+  - '**/*.yml'
+  - '**/*.yaml'
+  - '**/*.toml'
+  - '**/*.ini'
+  - '**/*.cfg'
+
+# UI/Frontend
+ui:
+  - 'icons/**/*'
+  - 'fonts/**/*'
+  - '**/*ui*.py'
+
+# Security
+security:
+  - '.github/workflows/security.yml'
+  - 'SECURITY.md'
